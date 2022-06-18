@@ -1,0 +1,21 @@
+<form (ngSubmit)="updateStudent()">
+  <label class="form-label" for="fullName">ФИО</label>
+  <input [(ngModel)]="student.fullName" [ngModelOptions]="{standalone: true}" class="form-control" id="fullName"/>
+  <p *ngIf="student.fullName===''" class="alert-warning">Это поле обязательно к заполнению</p>
+  <label class="form-label" for="contactData">Контактные данные</label>
+  <input [(ngModel)]="student.contactData" [ngModelOptions]="{standalone: true}" class="form-control" id="contactData"/>
+  <p *ngIf="student.contactData===''" class="alert-warning">Это поле обязательно к заполнению</p>
+  <label class="form-label" for="testResult">Результаты тестирования</label>
+  <input [(ngModel)]="student.testResult" [ngModelOptions]="{standalone: true}" class="form-control" id="testResult"
+         max="100" min="0" type="number"/>
+  <p *ngIf="student.testResult<0 || student.testResult>100" class="alert-warning">Результаты тестирования не могут быть
+    меньше 0 или больше 100</p>
+  <label class="form-label" for="studyCourse">Курс</label>
+  <input [(ngModel)]="student.studyCourse" [ngModelOptions]="{standalone: true}" class="form-control" id="studyCourse"
+         type="number"/>
+  <p *ngIf="student.studyCourse===0" class="alert-warning">Это поле обязательно к заполнению</p>
+  <label class="form-label" for="studyGroup">Группа</label>
+  <input [(ngModel)]="student.studyGroup" [ngModelOptions]="{standalone: true}" class="form-control" id="studyGroup"/>
+  <p *ngIf="student.studyGroup===''" class="alert-warning">Это поле обязательно к заполнению</p>
+  <input class="btn btn-primary" type="submit">
+</form>
