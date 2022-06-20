@@ -1,0 +1,16 @@
+span {
+  display: inline;
+  margin: 10px;
+}
+
+.students-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.student-div {
+  margin: 30px
+}
