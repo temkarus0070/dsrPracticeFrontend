@@ -12,12 +12,13 @@ export class ListStudentsComponent implements OnInit {
   public students: Student[] = [];
 
   constructor(private studentsService: StudentService) {
-  }
-
-  ngOnInit(): void {
     this.studentsService.getList().subscribe(students => {
       this.students = students;
     })
+  }
+
+  ngOnInit(): void {
+
   }
 
 }
