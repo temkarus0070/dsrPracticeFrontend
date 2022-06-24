@@ -1,0 +1,16 @@
+<div *ngIf="!isDelete" class="student-div">
+  <span>ФИО:</span>
+  <span>{{student.fullName}}</span>
+  <br/>
+  <span>Контактные данные:</span> <span>{{student.contactData}}</span>
+  <br/>
+  <span>Курс:</span> <span>{{student.studyCourse}}</span>
+  <br/>
+  <span>Группа:</span> <span>{{student.studyGroup}}</span>
+  <br/>
+  <span>Результаты тестирования:</span> <span>{{student.testResult}}%</span>
+  <div>
+    <a class="link-primary" href="/students/edit;id={{student.id}}">редактировать</a>
+    <a (click)="delete()" class="link-primary">удалить</a>
+  </div>
+</div>

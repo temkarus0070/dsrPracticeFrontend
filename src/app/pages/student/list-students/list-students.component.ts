@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from "../../../services/student.service";
 import {Student} from "../../../entities/student";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-list-students',
@@ -9,16 +10,22 @@ import {Student} from "../../../entities/student";
 })
 export class ListStudentsComponent implements OnInit {
 
-  public students: Student[] = [];
+  public students: Observable<Student[]> = new Observable<Student[]>();
+  public deletedStudents: Set<number> = new Set();
 
   constructor(private studentsService: StudentService) {
-    this.studentsService.getList().subscribe(students => {
-      this.students = students;
-    })
+    this.students = this.studentsService.getList();
   }
 
   ngOnInit(): void {
 
   }
 
+  removeStudent($event: Student) {
+    this.studentsService.delete($event.id).subscribe(
+      e => {
+        this.deletedStudents = this.deletedStudents.add($event.id);
+      }
+    ).unsubscribe();
+  }
 }

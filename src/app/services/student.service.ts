@@ -17,7 +17,7 @@ export class StudentService {
   }
 
   public update(student: Student): Observable<any> {
-    return this.httpClient.patch(`${BACKEND_URL}/students`, student);
+    return this.httpClient.put(`${BACKEND_URL}/students/${student.id}`, student);
   }
 
   public getList(): Observable<Student[]> {
@@ -26,5 +26,9 @@ export class StudentService {
 
   public get(id: number): Observable<Student> {
     return this.httpClient.get<Student>(`${BACKEND_URL}/students/${id}`);
+  }
+
+  public delete(id: number): Observable<any> {
+    return this.httpClient.delete(`${BACKEND_URL}/students/${id}`);
   }
 }

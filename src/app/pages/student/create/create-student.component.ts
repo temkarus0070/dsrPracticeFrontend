@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Student} from "../../../entities/student";
 import {StudentService} from "../../../services/student.service";
 import {LoadingProgressService} from "../../../services/loading-progress.service";
 
@@ -9,18 +8,15 @@ import {LoadingProgressService} from "../../../services/loading-progress.service
   styleUrls: ['./create-student.component.css']
 })
 export class CreateStudentComponent implements OnInit {
-  public student: Student = new Student();
-
   constructor(private studentService: StudentService, private loadingProgressService: LoadingProgressService) {
   }
 
   ngOnInit(): void {
   }
 
-  createStudent() {
-    console.log(this.student);
-    this.studentService.create(this.student).subscribe(event => {
-        location.href = "/"
+  createStudent(student: any) {
+    this.studentService.create(student).subscribe(event => {
+      location.href = "/"
     });
   }
 
