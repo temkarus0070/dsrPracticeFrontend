@@ -4,4 +4,5 @@ export class PracticeTicketId {
   public programmingLanguageId: number = 0;
   public beginOfPractice: Date = new Date();
   public endOfPractice: Date = new Date();
+
 }

@@ -1,0 +1,13 @@
+<form (ngSubmit)="submitMentor()" *ngIf="mentor !== null">
+  <label class="form-label" for="fullName">ФИО</label>
+  <input [(ngModel)]="mentor.fullName" [ngModelOptions]="{standalone: true}" class="form-control" id="fullName"/>
+  <p *ngIf="mentor.fullName===''" class="alert-warning">Это поле обязательно к заполнению</p>
+  <label class="form-label" for="contactData">Контактные данные</label>
+  <input [(ngModel)]="mentor.contactData" [ngModelOptions]="{standalone: true}" class="form-control" id="contactData"/>
+  <p *ngIf="mentor.contactData===''" class="alert-warning">Это поле обязательно к заполнению</p>
+  <label class="form-label" for="jobName">Должность</label>
+  <input [(ngModel)]="mentor.jobName" [ngModelOptions]="{standalone: true}" class="form-control" id="jobName"
+         type="text"/>
+  <p *ngIf="mentor.jobName===''" class="alert-warning">Это поле обязательно к заполнению</p>
+  <input class="btn btn-primary" type="submit" value="отправить">
+</form>

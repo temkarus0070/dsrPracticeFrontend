@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Student} from "../entities/student";
 import {BACKEND_URL} from "../../app.module";
-import {PracticeTicket} from "../entities/practiceTicket";
+import {PracticeTicket} from "../../practice-ticket/entity/practiceTicket";
 
 @Injectable({
   providedIn: 'root'

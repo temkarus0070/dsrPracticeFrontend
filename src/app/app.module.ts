@@ -9,10 +9,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {LoadingInterceptor} from "./interceptors/loading.interceptor";
 import {ErrorsInterceptor} from "./interceptors/errors.interceptor";
-import {HeaderComponent} from "./student/pages/header/header.component";
-import {HomePageComponent} from "./student/pages/home-page/home-page.component";
+import {HeaderComponent} from "./pages/header/header.component";
+import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {MentorModule} from "./mentor/mentor.module";
 import {StudentModule} from "./student/student.module";
+import {PracticeTicketModule} from "./practice-ticket/practice-ticket.module";
 
 export const BACKEND_URL = "http://localhost:8080"
 export const ROUTES: Routes = [{component: HomePageComponent, path: ""}]
@@ -31,7 +32,8 @@ export const ROUTES: Routes = [{component: HomePageComponent, path: ""}]
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MentorModule,
-    StudentModule
+    StudentModule,
+    PracticeTicketModule
   ],
   providers: [HttpClient,
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
