@@ -1,13 +1,13 @@
 <div class="mentor-div">
-  <span>ФИО:</span>
+  <span class="label">ФИО:</span>
   <span>{{mentor.fullName}}</span>
   <br/>
-  <span>Контактные данные:</span> <span>{{mentor.contactData}}</span>
+  <span class="label">Контактные данные:</span> <span>{{mentor.contactData}}</span>
   <br/>
-  <span>Должность:</span> <span>{{mentor.jobName}}</span>
+  <span class="label">Должность:</span> <span>{{mentor.jobName}}</span>
   <br/>
-  <div>
-    <a class="link-primary" href="/mentors/edit;id={{mentor.id}}">редактировать</a>
-    <a (click)="delete()" class="link-primary">удалить</a>
+  <div class="actionButtons">
+    <a class="btn-primary" href="/mentors/edit;id={{mentor.id}}">редактировать</a>
+    <button (click)="delete()" class="btn-primary">удалить</button>
   </div>
 </div>

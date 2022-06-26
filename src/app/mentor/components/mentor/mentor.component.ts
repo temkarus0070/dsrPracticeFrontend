@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Mentor} from "../../../entities/mentor";
+import {Mentor} from "../../entity/mentor";
 import {MentorService} from "../../services/mentor.service";
 
 @Component({
@@ -18,8 +18,17 @@ export class MentorComponent implements OnInit {
   }
 
   delete() {
-    this.mentorService.delete(this.mentor.id).subscribe(e => {
-      this.isDelete = true;
-    }).unsubscribe();
+    this.mentorService.getMentorPracticeTickets(this.mentor.id).subscribe(tickets => {
+      if (tickets.length > 0) {
+        var b = confirm('У данного ментора есть назначенные студенты по практике, при удалении ментора все прохождения практики и его оценки для студентов будут удалены, продолжить?');
+        if (!b) {
+          return;
+        }
+        this.mentorService.delete(this.mentor.id).subscribe(e => {
+          this.isDelete = true;
+        });
+      }
+    })
+
   }
 }

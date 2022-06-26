@@ -9,3 +9,20 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+
+.actionButtons > * {
+  margin: 10px;
+}
+
+.entity-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.label {
+  font-weight: bolder;
+}

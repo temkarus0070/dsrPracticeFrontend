@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from "../../../services/student.service";
-import {LoadingProgressService} from "../../../services/loading-progress.service";
+import {LoadingProgressService} from "../../../../services/loading-progress.service";
 
 @Component({
   selector: 'app-create',
