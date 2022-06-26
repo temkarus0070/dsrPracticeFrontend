@@ -1,13 +1,37 @@
 <form (ngSubmit)="submitPracticeTicket()" *ngIf="practiceTicket !== null">
   <label class="form-label" for="student">Студент</label>
-  <select id="student" (click)="loadStudents()">
-    <option *ngFor="let student of students | async" value="{{student.id}}">{{student.fullName +" "+ student.studyCourse +"курс " + student.studyGroup+" группа"}}</option>
+  <select [(ngModel)]="practiceTicket.student.id" id="student">
+    <option *ngFor="let student of students | async"
+            value="{{student.id}}">{{student.fullName + " " + student.studyCourse + "курс " + student.studyGroup + " группа"}}</option>
   </select>
   <p *ngIf="practiceTicket.student.fullName!==''" class="alert-warning">Это поле обязательно к заполнению</p>
 
   <label class="form-label" for="mentor">Ментор</label>
-  <select id="mentor" (click)="loadMentors()">
-    <option *ngFor="let mentor of mentors | async" value="{{mentor.id}}">{{mentor.fullName +" "+ mentor.jobName}}</option>
+  <select [(ngModel)]="practiceTicket.mentor.id" id="mentor">
+    <option *ngFor="let mentor of mentors | async"
+            value="{{mentor.id}}">{{mentor.fullName + " " + mentor.jobName}}</option>
   </select>
+
+  <label class="form-label" for="taskName">Название практического задания</label>
+  <input [(ngModel)]="practiceTicket.practiceTask.taskName" id="taskName" type="text"/>
+
+
+  <label class="form-label" for="taskDescription">Описание практического задания</label>
+  <textarea [(ngModel)]="practiceTicket.practiceTask.taskName" id="taskDescription" type="text">
+  </textarea>
+
+  <label class="form-label" for="progLanguage">Язык программирования</label>
+  <select [(ngModel)]="practiceTicket.programmingLanguage.id" id="progLanguage">
+    <option *ngFor="let language of progLanguages | async" value="{{language.id}}">{{language.name}}</option>
+  </select>
+
+  <label class="form-label" for="beginDate">Дата начала практики</label>
+  <input [(ngModel)]="practiceTicket.id.beginOfPractice" id="beginDate" type="date">
+
+  <label class="form-label" for="endDate">Дата окончания практики</label>
+  <input [(ngModel)]="practiceTicket.id.endOfPractice" id="endDate" type="date">
+
+  <p *ngFor="let language of progLanguages | async">{{language.name}}</p>
+
   <input class="btn btn-primary" type="submit" value="отправить">
 </form>

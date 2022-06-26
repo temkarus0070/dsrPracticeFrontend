@@ -5,6 +5,8 @@ import {MentorService} from "../../../mentor/services/mentor.service";
 import {Student} from "../../../student/entities/student";
 import {Mentor} from "../../../mentor/entity/mentor";
 import {Observable} from "rxjs";
+import {ProgrammingLanguage} from "../../entity/programmingLanguage";
+import {ProgLanguagesService} from "../../../services/prog-languages.service";
 
 @Component({
   selector: 'app-practice-ticket-input-form',
@@ -13,23 +15,21 @@ import {Observable} from "rxjs";
 })
 export class PracticeTicketInputFormComponent implements OnInit {
 
-  @Input() public practiceTicket:PracticeTicket|null=new PracticeTicket();
-  public students:Observable<Student[]>=new Observable<Student[]>();
-  public mentors:Observable<Mentor[]>=new Observable<Mentor[]>();
-  constructor(private studentService:StudentService,private mentorService:MentorService) { }
+  @Input() public practiceTicket: PracticeTicket | null = new PracticeTicket();
+  public students: Observable<Student[]> = this.studentService.getList();
+  public mentors: Observable<Mentor[]> = this.mentorService.getAll();
+  public progLanguages: Observable<ProgrammingLanguage[]> = this.progLanguagesService.getList();
+
+  constructor(private studentService: StudentService, private mentorService: MentorService, private progLanguagesService: ProgLanguagesService) {
+
+  }
 
   ngOnInit(): void {
+
   }
 
   submitPracticeTicket() {
 
   }
 
-  loadStudents() {
-    this.students=this.studentService.getList();
-  }
-
-  loadMentors() {
-    this.mentors=this.mentorService.getAll();
-  }
 }
