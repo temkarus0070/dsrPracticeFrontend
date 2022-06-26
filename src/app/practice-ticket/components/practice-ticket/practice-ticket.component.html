@@ -2,25 +2,32 @@
   <span class="label">Язык программирования:</span>
   <span>{{practiceTicket.programmingLanguage.name}}</span>
   <br/>
-  <span class="label">ФИО студента:</span> <a href="/student;id={{practiceTicket.student.id}}">{{practiceTicket.student.fullName}}</a>
+  <span class="label">ФИО студента:</span> <a
+  href="/student;id={{practiceTicket.student.id}}">{{practiceTicket.student.fullName}}</a>
   <br/>
-  <span class="label">ФИО ментора:</span> <a href="/mentor;id={{practiceTicket.mentor.id}}">{{practiceTicket.mentor.fullName}}</a>
+  <span class="label">ФИО ментора:</span> <a
+  href="/mentor;id={{practiceTicket.mentor.id}}">{{practiceTicket.mentor.fullName}}</a>
   <br/>
   <span class="label">Название практического задания:</span> <span>{{practiceTicket.practiceTask.taskName}}</span>
   <br/>
-  <span class="label">Описание практического задания:</span> <pre>{{practiceTicket.practiceTask.taskText}}</pre>
+  <span class="label">Описание практического задания:</span>
+  <pre>{{practiceTicket.practiceTask.taskText}}</pre>
   <br/>
-  <span class="label">Рекомендован к прохождению собеседования:</span> <span>{{practiceTicket.isRecommendToHire?"Рекомендован":"Не рекомендован"}}</span>
+  <span class="label">Рекомендован к прохождению собеседования:</span>
+  <span>{{practiceTicket.recommendToHire ? "Рекомендован" : "Не рекомендован"}}</span>
   <br/>
   <span class="label">Итоговая оценка прохождения практики:</span> <span>{{practiceTicket.finalMark}}</span>
   <br/>
   <span class="label">Еженедельные оценки работы студента ментором:</span>
-  <div *ngFor="let weeklyReview of practiceTicket.weeklyMentorReviews">
-    <p>{{weeklyReview.textReview}}</p>
+  <div *ngIf="practiceTicket.weeklyMentorReviews">
+    <div *ngFor="let weeklyReview of practiceTicket.weeklyMentorReviews">
+      <p>{{weeklyReview.textReview}}</p>
+    </div>
   </div>
+
   <br/>
   <span class="label">Итоговая оценка работы студента ментором:</span>
-    <p>{{practiceTicket.finalMentorReview.textReview}}</p>
+  <p *ngIf="practiceTicket.finalMentorReview">{{practiceTicket.finalMentorReview.textReview}}</p>
   <br/>
   <div class="actionButtons">
     <a class="btn-primary" href="/practice-tickets/edit;id={{practiceTicket.id}}">редактировать</a>

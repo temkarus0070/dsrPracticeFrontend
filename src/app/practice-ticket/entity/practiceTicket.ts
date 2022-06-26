@@ -11,8 +11,8 @@ export class PracticeTicket {
   public mentor: Mentor = new Mentor();
   public student: Student = new Student();
   public practiceTask: PracticeTask = new PracticeTask();
-  public finalMark:Mark = Mark.НЕУДОВЛЕТВОРИТЕЛЬНО;
-  public isRecommendToHire = false;
+  public finalMark: Mark = Mark.НЕУДОВЛЕТВОРИТЕЛЬНО;
+  public recommendToHire = false;
   public finalMentorReview: MentorReview = new MentorReview();
   public weeklyMentorReviews: MentorReview[] = [];
   public programmingLanguage:ProgrammingLanguage=new ProgrammingLanguage();
