@@ -11,10 +11,11 @@ export class PracticeTicket {
   public mentor: Mentor = new Mentor();
   public student: Student = new Student();
   public practiceTask: PracticeTask = new PracticeTask();
-  public finalMark: Mark = Mark.НЕУДОВЛЕТВОРИТЕЛЬНО;
+  public finalMark: Mark | null = null;
   public recommendToHire = false;
-  public finalMentorReview: MentorReview = new MentorReview();
+  public finalMentorReview: MentorReview | null = null;
   public weeklyMentorReviews: MentorReview[] = [];
   public programmingLanguage:ProgrammingLanguage=new ProgrammingLanguage();
+
 
 }

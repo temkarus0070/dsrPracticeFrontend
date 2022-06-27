@@ -7,6 +7,7 @@ import {Mentor} from "../../../mentor/entity/mentor";
 import {Observable} from "rxjs";
 import {ProgrammingLanguage} from "../../entity/programmingLanguage";
 import {ProgLanguagesService} from "../../../services/prog-languages.service";
+import {PracticeTicketService} from "../../services/practice-ticket.service";
 
 @Component({
   selector: 'app-practice-ticket-input-form',
@@ -15,13 +16,12 @@ import {ProgLanguagesService} from "../../../services/prog-languages.service";
 })
 export class PracticeTicketInputFormComponent implements OnInit {
 
-  @Input() public practiceTicket: PracticeTicket | null = new PracticeTicket();
+  @Input() public practiceTicket: PracticeTicket = new PracticeTicket();
   public students: Observable<Student[]> = this.studentService.getList();
   public mentors: Observable<Mentor[]> = this.mentorService.getAll();
   public progLanguages: Observable<ProgrammingLanguage[]> = this.progLanguagesService.getList();
 
-  constructor(private studentService: StudentService, private mentorService: MentorService, private progLanguagesService: ProgLanguagesService) {
-
+  constructor(private studentService: StudentService, private mentorService: MentorService, private progLanguagesService: ProgLanguagesService, private practiceTicketaService: PracticeTicketService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +29,10 @@ export class PracticeTicketInputFormComponent implements OnInit {
   }
 
   submitPracticeTicket() {
-
+    console.log(this.practiceTicket);
+    this.practiceTicketaService.create(this.practiceTicket).subscribe(e => {
+      location.href = "/practice-tickets"
+    });
   }
 
 }
