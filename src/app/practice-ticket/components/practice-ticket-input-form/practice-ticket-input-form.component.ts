@@ -18,15 +18,17 @@ export class PracticeTicketInputFormComponent implements OnInit {
 
   @Input() public practiceTicket: PracticeTicket | null = new PracticeTicket();
   @Output() public ticketUpdate = new EventEmitter<PracticeTicket>();
+  @Input() public isUpdate = false;
   public students: Observable<Student[]> = this.studentService.getList();
   public mentors: Observable<Mentor[]> = this.mentorService.getAll();
   public progLanguages: Observable<ProgrammingLanguage[]> = this.progLanguagesService.getList();
 
   constructor(private studentService: StudentService, private mentorService: MentorService, private progLanguagesService: ProgLanguagesService, private practiceTicketaService: PracticeTicketService) {
+    console.log(this.practiceTicket);
+
   }
 
   ngOnInit(): void {
-
   }
 
   submitPracticeTicket() {

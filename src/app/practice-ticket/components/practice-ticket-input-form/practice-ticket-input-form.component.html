@@ -1,13 +1,15 @@
 <form (ngSubmit)="submitPracticeTicket()" *ngIf="practiceTicket !== null">
   <label class="form-label" for="student">Студент</label>
-  <select [(ngModel)]="practiceTicket.student.id" [ngModelOptions]="{standalone: true}" id="student">
+  <select [(ngModel)]="practiceTicket.student.id" [disabled]="isUpdate" [ngModelOptions]="{standalone: true}"
+          id="student">
     <option *ngFor="let student of students | async"
             value="{{student.id}}">{{student.fullName + " " + student.studyCourse + "курс " + student.studyGroup + " группа"}}</option>
   </select>
   <p *ngIf="practiceTicket.student.fullName!==''" class="alert-warning">Это поле обязательно к заполнению</p>
 
   <label class="form-label" for="mentor">Ментор</label>
-  <select [(ngModel)]="practiceTicket.mentor.id" [ngModelOptions]="{standalone: true}" id="mentor">
+  <select [(ngModel)]="practiceTicket.mentor.id" [disabled]="isUpdate" [ngModelOptions]="{standalone: true}"
+          id="mentor">
     <option *ngFor="let mentor of mentors | async"
             value="{{mentor.id}}">{{mentor.fullName + " " + mentor.jobName}}</option>
   </select>
@@ -23,17 +25,20 @@
   </textarea>
 
   <label class="form-label" for="progLanguage">Язык программирования</label>
-  <select [(ngModel)]="practiceTicket.programmingLanguage.id" [ngModelOptions]="{standalone: true}" id="progLanguage">
+  <select [(ngModel)]="practiceTicket.programmingLanguage.id" [disabled]="isUpdate"
+          [ngModelOptions]="{standalone: true}" id="progLanguage">
     <option *ngFor="let language of progLanguages | async" value="{{language.id}}">{{language.name}}</option>
   </select>
 
   <label class="form-label" for="beginDate">Дата начала практики</label>
-  <input [(ngModel)]="practiceTicket.id.beginOfPractice" [ngModelOptions]="{standalone: true}" id="beginDate"
+  <input [(ngModel)]="practiceTicket.id.beginOfPractice" [disabled]="isUpdate" [ngModelOptions]="{standalone: true}"
+         id="beginDate"
          type="date">
 
-  <label class="form-label" for="endDate">Дата окончания практики</label>
-  <input [(ngModel)]="practiceTicket.id.endOfPractice" [ngModelOptions]="{standalone: true}" id="endDate" type="date">
+  <label *ngIf="!isUpdate" class="form-label" for="endDate">Дата окончания практики</label>
+  <input *ngIf="!isUpdate" [(ngModel)]="practiceTicket.id.endOfPractice" [ngModelOptions]="{standalone: true}"
+         id="endDate" type="date">
 
-
-  <input class="btn btn-primary" type="submit" value="отправить">
+  <app-update-reviews *ngIf="isUpdate"></app-update-reviews>
+  <input class="btn btn-primary" style="margin-top: 40px" type="submit" value="отправить">
 </form>

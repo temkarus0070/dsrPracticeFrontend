@@ -11,6 +11,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
+import {UpdateReviewsComponent} from "./components/update-reviews/update-reviews.component";
 
 
 export const ROUTES:Routes=[{component:ListComponent,path:"practice-tickets"},{component:UpdateComponent,path:"practice-tickets/edit"},
@@ -22,7 +23,8 @@ export const ROUTES:Routes=[{component:ListComponent,path:"practice-tickets"},{c
     CreateComponent,
     UpdateComponent,
     PracticeTicketComponent,
-    PracticeTicketInputFormComponent
+    PracticeTicketInputFormComponent,
+    UpdateReviewsComponent
   ],
   imports: [
     CommonModule,
