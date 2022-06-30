@@ -35,12 +35,12 @@ export class PracticeTicketService {
   }
 
   private static getHttpParamsFromId(id:PracticeTicketId):HttpParams{
-    var httpParams=new HttpParams();
-    httpParams=httpParams.set("mentorId",id.mentorId);
-    httpParams=httpParams.set("studentId",id.studentId);
-    httpParams=httpParams.set("programmingLanguageId",id.programmingLanguageId);
-    httpParams=httpParams.set("beginOfPractice",id.beginOfPractice.toDateString());
-    httpParams=httpParams.set("endOfPractice",id.endOfPractice.toDateString());
+    var httpParams = new HttpParams();
+    httpParams = httpParams.set("mentorId", id.mentorId);
+    httpParams = httpParams.set("studentId", id.studentId);
+    httpParams = httpParams.set("programmingLanguageId", id.programmingLanguageId);
+    httpParams = httpParams.set("beginOfPractice", id.beginOfPractice.toLocaleDateString());
+    httpParams = httpParams.set("endOfPractice", id.endOfPractice.toLocaleDateString());
     return httpParams;
   }
 }

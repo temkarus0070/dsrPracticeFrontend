@@ -8,7 +8,8 @@ import {PracticeTicketService} from "../../services/practice-ticket.service";
   styleUrls: ['./practice-ticket.component.css']
 })
 export class PracticeTicketComponent implements OnInit {
-  @Input()public practiceTicket:PracticeTicket=new PracticeTicket();
+  @Input() public practiceTicket: PracticeTicket = new PracticeTicket();
+  public isDeleted = false;
 
   constructor(private practiceTicketService:PracticeTicketService) { }
 
@@ -17,8 +18,9 @@ export class PracticeTicketComponent implements OnInit {
   }
 
   delete() {
-    this.practiceTicketService.delete(this.practiceTicket.id).subscribe(e=>{
-      location.href="/practice-tickets";
+    console.log(this.practiceTicket.id);
+    this.practiceTicketService.delete(this.practiceTicket.id).subscribe(e => {
+      this.isDeleted = true;
     })
   }
 }

@@ -5,4 +5,15 @@ export class PracticeTicketId {
   public beginOfPractice: Date = new Date();
   public endOfPractice: Date = new Date();
 
+
+  static build(mentorId: number, studentId: number, programmingLanguageId: number, beginOfPractice: Date, endOfPractice: Date): PracticeTicketId {
+    var id = new PracticeTicketId();
+    id.mentorId = mentorId;
+    id.studentId = studentId;
+    id.programmingLanguageId = programmingLanguageId;
+    id.beginOfPractice = beginOfPractice;
+    id.endOfPractice = endOfPractice;
+    return id;
+  }
+
 }

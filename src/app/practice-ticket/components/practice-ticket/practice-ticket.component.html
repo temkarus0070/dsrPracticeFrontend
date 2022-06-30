@@ -1,4 +1,4 @@
-<div class="ticket-div">
+<div *ngIf="!isDeleted" class="ticket-div">
   <span class="label">Язык программирования:</span>
   <span>{{practiceTicket.programmingLanguage.name}}</span>
   <br/>
@@ -8,10 +8,17 @@
   <span class="label">ФИО ментора:</span> <a
   href="/mentor;id={{practiceTicket.mentor.id}}">{{practiceTicket.mentor.fullName}}</a>
   <br/>
-  <span class="label">Название практического задания:</span> <span>{{practiceTicket.practiceTask.taskName}}</span>
+  <span class="label">Начало прохождения практики:</span> <span
+  *ngIf="practiceTicket.id.beginOfPractice">{{practiceTicket.id.beginOfPractice|date}}</span>
+  <br/>
+  <span class="label">Конец прохождения практики:</span> <span
+  *ngIf="practiceTicket.id.endOfPractice">{{practiceTicket.id.endOfPractice|date}}</span>
+  <br/>
+  <span class="label">Название практического задания:</span> <span
+  *ngIf="practiceTicket.practiceTask">{{practiceTicket.practiceTask.taskName}}</span>
   <br/>
   <span class="label">Описание практического задания:</span>
-  <pre>{{practiceTicket.practiceTask.taskText}}</pre>
+  <pre *ngIf="practiceTicket.practiceTask">{{practiceTicket.practiceTask.taskText}}</pre>
   <br/>
   <span class="label">Рекомендован к прохождению собеседования:</span>
   <span>{{practiceTicket.recommendToHire ? "Рекомендован" : "Не рекомендован"}}</span>
@@ -30,7 +37,9 @@
   <p *ngIf="practiceTicket.finalMentorReview">{{practiceTicket.finalMentorReview.textReview}}</p>
   <br/>
   <div class="actionButtons">
-    <a class="btn-primary" href="/practice-tickets/edit;id={{practiceTicket.id}}">редактировать</a>
+    <a [routerLink]="['/practice-tickets/edit',{'beginOfPractice':practiceTicket.id.beginOfPractice,'endOfPractice':practiceTicket.id.endOfPractice,
+    'studentId':practiceTicket.id.studentId,'mentorId':practiceTicket.id.mentorId,'programmingLanguageId':practiceTicket.id.programmingLanguageId}]"
+       class="btn-primary">редактировать</a>
     <button (click)="delete()" class="btn-primary">удалить</button>
   </div>
 </div>

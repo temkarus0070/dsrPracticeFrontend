@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {PracticeTicketService} from "../../services/practice-ticket.service";
 
 @Component({
   selector: 'app-create',
@@ -7,9 +8,15 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private practiceTicketService: PracticeTicketService) {
+  }
 
   ngOnInit(): void {
   }
 
+  create(practiceTicket: any) {
+    this.practiceTicketService.create(practiceTicket).subscribe(e => {
+      location.href = "/practice-tickets"
+    });
+  }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PracticeTicket} from "../../entity/practiceTicket";
 import {StudentService} from "../../../student/services/student.service";
 import {MentorService} from "../../../mentor/services/mentor.service";
@@ -16,7 +16,8 @@ import {PracticeTicketService} from "../../services/practice-ticket.service";
 })
 export class PracticeTicketInputFormComponent implements OnInit {
 
-  @Input() public practiceTicket: PracticeTicket = new PracticeTicket();
+  @Input() public practiceTicket: PracticeTicket | null = new PracticeTicket();
+  @Output() public ticketUpdate = new EventEmitter<PracticeTicket>();
   public students: Observable<Student[]> = this.studentService.getList();
   public mentors: Observable<Mentor[]> = this.mentorService.getAll();
   public progLanguages: Observable<ProgrammingLanguage[]> = this.progLanguagesService.getList();
@@ -29,10 +30,8 @@ export class PracticeTicketInputFormComponent implements OnInit {
   }
 
   submitPracticeTicket() {
-    console.log(this.practiceTicket);
-    this.practiceTicketaService.create(this.practiceTicket).subscribe(e => {
-      location.href = "/practice-tickets"
-    });
+    if (this.practiceTicket)
+      this.ticketUpdate.emit(this.practiceTicket);
   }
 
 }
