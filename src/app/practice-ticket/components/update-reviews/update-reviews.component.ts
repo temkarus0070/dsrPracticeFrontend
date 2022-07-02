@@ -25,11 +25,13 @@ export class UpdateReviewsComponent implements OnInit {
   initMaxWeeklyReviewDate() {
     this.maxEndOfWeeklyReview = new Date(this.practiceTicket.id.beginOfPractice);
     var date = new Date(this.practiceTicket.id.beginOfPractice);
+    for (let weeklyReview of this.practiceTicket.weeklyMentorReviews) {
+      date = new Date(date.getTime() + (1000 * 60 * 60 * 24 * 7))
+    }
+    this.maxEndOfWeeklyReview = date;
     var endPractice = new Date(this.practiceTicket.id.endOfPractice)
-    console.log(date < this.practiceTicket.id.endOfPractice);
     while (date < endPractice) {
       date = new Date(date.getTime() + (1000 * 60 * 60 * 24 * 7))
-      console.log(date)
     }
     this.endOfReviews = date;
   }
@@ -38,10 +40,11 @@ export class UpdateReviewsComponent implements OnInit {
     if (!this.endOfReviews) {
       this.initMaxWeeklyReviewDate();
     }
-    var endPractice = new Date(this.practiceTicket.id.endOfPractice)
+    console.log(this.endOfReviews)
     var newMaxEndOfReviews = new Date(this.maxEndOfWeeklyReview.getTime());
     newMaxEndOfReviews.setDate(newMaxEndOfReviews.getDate() + 7)
-    if (newMaxEndOfReviews <= endPractice) {
+    console.log(newMaxEndOfReviews)
+    if (newMaxEndOfReviews < this.endOfReviews) {
       var mentorReview = new MentorReview();
       var practiceTicket1 = new PracticeTicket();
       practiceTicket1.id = this.practiceTicket.id;
