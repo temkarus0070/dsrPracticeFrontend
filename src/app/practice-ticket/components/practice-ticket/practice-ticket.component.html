@@ -27,7 +27,8 @@
   <br/>
   <span class="label">Еженедельные оценки работы студента ментором:</span>
   <div *ngIf="practiceTicket.weeklyMentorReviews">
-    <div *ngFor="let weeklyReview of practiceTicket.weeklyMentorReviews">
+    <div *ngFor="let weeklyReview of practiceTicket.weeklyMentorReviews; let i=index">
+      <span>{{i + 1}} неделя:</span>
       <p>{{weeklyReview.textReview}}</p>
     </div>
   </div>

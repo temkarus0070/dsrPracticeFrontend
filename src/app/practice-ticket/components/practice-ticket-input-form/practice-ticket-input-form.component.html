@@ -39,6 +39,21 @@
   <input [(ngModel)]="practiceTicket.id.endOfPractice" [disabled]="isUpdate" [ngModelOptions]="{standalone: true}"
          id="endDate" type="date">
 
-  <app-update-reviews *ngIf="isUpdate" [practiceTicket]="practiceTicket"></app-update-reviews>
+  <div *ngIf="isUpdate">
+    <label for="finalMark">финальная оценка за практику</label>
+    <select [(ngModel)]="practiceTicket.finalMark" [ngModelOptions]="{standalone: true}" id="finalMark">
+      <option *ngFor="let mark of marksValues">{{mark}}</option>
+    </select>
+
+    <label for="hireReccomend">Рекомендован к собеседованию</label>
+    <input [(ngModel)]="practiceTicket.recommendToHire" [ngModelOptions]="{standalone: true}" id="hireReccomend"
+           type="checkbox"/>
+    <app-update-reviews [practiceTicket]="practiceTicket"></app-update-reviews>
+
+    <label *ngIf="practiceTicket.finalMentorReview" for="finalReview">итоговое оценивание практики</label>
+    <textarea *ngIf="practiceTicket.finalMentorReview" [(ngModel)]="practiceTicket.finalMentorReview.textReview"
+              [ngModelOptions]="{standalone: true}" cols="50" id="finalReview"></textarea>
+  </div>
+
   <input class="btn btn-primary" style="margin-top: 40px" type="submit" value="отправить">
 </form>
