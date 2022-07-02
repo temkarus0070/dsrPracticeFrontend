@@ -16,7 +16,7 @@ import {PracticeTicketService} from "../../services/practice-ticket.service";
 })
 export class PracticeTicketInputFormComponent implements OnInit {
 
-  @Input() public practiceTicket: PracticeTicket | null = new PracticeTicket();
+  @Input() public practiceTicket!: PracticeTicket | null;
   @Output() public ticketUpdate = new EventEmitter<PracticeTicket>();
   @Input() public isUpdate = false;
   public students: Observable<Student[]> = this.studentService.getList();
@@ -24,7 +24,6 @@ export class PracticeTicketInputFormComponent implements OnInit {
   public progLanguages: Observable<ProgrammingLanguage[]> = this.progLanguagesService.getList();
 
   constructor(private studentService: StudentService, private mentorService: MentorService, private progLanguagesService: ProgLanguagesService, private practiceTicketaService: PracticeTicketService) {
-    console.log(this.practiceTicket);
 
   }
 
@@ -34,6 +33,7 @@ export class PracticeTicketInputFormComponent implements OnInit {
   submitPracticeTicket() {
     if (this.practiceTicket)
       this.ticketUpdate.emit(this.practiceTicket);
+    console.log(this.practiceTicket)
   }
 
 }

@@ -35,10 +35,10 @@
          id="beginDate"
          type="date">
 
-  <label *ngIf="!isUpdate" class="form-label" for="endDate">Дата окончания практики</label>
-  <input *ngIf="!isUpdate" [(ngModel)]="practiceTicket.id.endOfPractice" [ngModelOptions]="{standalone: true}"
+  <label class="form-label" for="endDate">Дата окончания практики</label>
+  <input [(ngModel)]="practiceTicket.id.endOfPractice" [disabled]="isUpdate" [ngModelOptions]="{standalone: true}"
          id="endDate" type="date">
 
-  <app-update-reviews *ngIf="isUpdate"></app-update-reviews>
+  <app-update-reviews *ngIf="isUpdate" [practiceTicket]="practiceTicket"></app-update-reviews>
   <input class="btn btn-primary" style="margin-top: 40px" type="submit" value="отправить">
 </form>

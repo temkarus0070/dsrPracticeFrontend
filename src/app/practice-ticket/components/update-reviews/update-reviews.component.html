@@ -1,8 +1,9 @@
-<div>
-  <button (click)="addNewWeeklyReview()">добавить еженедельную оценку</button>
+<form>
+  <button (click)="addNewWeeklyReview()" type="button">добавить еженедельную оценку</button>
   <div *ngFor="let review of practiceTicket.weeklyMentorReviews">
-    <textarea [ngModel]="review.textReview" placeholder="текст отзыва о работе студента за неделю">
+    <textarea [(ngModel)]="review.textReview" [ngModelOptions]="{standalone: true}" cols="60" name="review{{review.id}}"
+              placeholder="текст отзыва о работе студента за неделю">
 
     </textarea>
   </div>
-</div>
+</form>
