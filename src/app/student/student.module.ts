@@ -15,7 +15,8 @@ export const ROUTES: Routes = [{
   component: CreateStudentComponent,
   path: "students/create"
 }, {component: ListStudentsComponent, path: "students"},
-  {component: UpdateStudentComponent, path: "students/edit"}]
+  {component: UpdateStudentComponent, path: "students/edit"},
+  {component: StudentComponent, path: "students/:id"}]
 
 @NgModule({
   declarations: [

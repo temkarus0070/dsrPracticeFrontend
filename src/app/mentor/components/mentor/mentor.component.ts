@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Mentor} from "../../entity/mentor";
 import {MentorService} from "../../services/mentor.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-mentor',
@@ -11,7 +12,15 @@ export class MentorComponent implements OnInit {
   @Input() public mentor: Mentor = new Mentor();
   public isDelete = false;
 
-  constructor(private mentorService: MentorService) {
+  constructor(private mentorService: MentorService, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe(params => {
+      if (params.has("id")) {
+        const id = Number.parseInt(params.get('id') as string);
+        this.mentorService.get(id).subscribe(mentor => {
+          this.mentor = mentor
+        });
+      }
+    })
   }
 
   ngOnInit(): void {

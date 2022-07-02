@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Student} from "../../entities/student";
 import {StudentService} from "../../services/student.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-student',
@@ -12,7 +13,16 @@ export class StudentComponent implements OnInit {
   public isDelete = false;
   @Input() public student: Student = new Student();
 
-  constructor(private studentService: StudentService) {
+  constructor(private studentService: StudentService, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe(params => {
+      if (params.has("id")) {
+        var id = Number.parseInt(params.get("id") as string);
+        this.studentService.get(id).subscribe(student => {
+          this.student = student;
+        })
+
+      }
+    })
   }
 
   ngOnInit(): void {

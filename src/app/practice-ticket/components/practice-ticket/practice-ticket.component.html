@@ -3,10 +3,10 @@
   <span>{{practiceTicket.programmingLanguage.name}}</span>
   <br/>
   <span class="label">ФИО студента:</span> <a
-  href="/student;id={{practiceTicket.student.id}}">{{practiceTicket.student.fullName}}</a>
+  href="/students/{{practiceTicket.student.id}}">{{practiceTicket.student.fullName}}</a>
   <br/>
   <span class="label">ФИО ментора:</span> <a
-  href="/mentor;id={{practiceTicket.mentor.id}}">{{practiceTicket.mentor.fullName}}</a>
+  href="/mentors/{{practiceTicket.mentor.id}}">{{practiceTicket.mentor.fullName}}</a>
   <br/>
   <span class="label">Начало прохождения практики:</span> <span
   *ngIf="practiceTicket.id.beginOfPractice">{{practiceTicket.id.beginOfPractice|date}}</span>

@@ -13,7 +13,8 @@ export const ROUTES: Routes = [{
   component: CreateComponent,
   path: "mentors/create"
 }, {component: ListComponent, path: "mentors"},
-  {component: UpdateComponent, path: "mentors/edit"}]
+  {component: UpdateComponent, path: "mentors/edit"},
+  {component: MentorComponent, path: 'mentors/:id'}]
 
 @NgModule({
   declarations: [
