@@ -1,0 +1,20 @@
+<form (ngSubmit)="getStats()">
+  <label for="practiceBegin"></label>
+  <input [(ngModel)]="beginDate" [ngModelOptions]="{standalone: true}" id="practiceBegin" type="date"/>
+  <label for="practiceEnd"></label>
+  <input [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}" id="practiceEnd" type="date"/>
+  <input class="btn btn-primary" type="submit" value="Получить">
+</form>
+
+<div>
+  <table>
+    <tr>
+      <th>язык программирования</th>
+      <th>количество студентов</th>
+    </tr>
+    <tr *ngFor="let stat of progLanguagesStats | async">
+      <td>{{stat.language}}</td>
+      <td>{{stat.count}}</td>
+    </tr>
+  </table>
+</div>

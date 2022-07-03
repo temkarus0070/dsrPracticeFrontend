@@ -14,6 +14,14 @@ import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {MentorModule} from "./mentor/mentor.module";
 import {StudentModule} from "./student/student.module";
 import {PracticeTicketModule} from "./practice-ticket/practice-ticket.module";
+import {StatsComponent} from './practice-stats/pages/stats/stats.component';
+import {StatsByMentorsComponent} from './practice-stats/pages/stats-by-mentors/stats-by-mentors.component';
+import {
+  StatsByProgLanguagesComponent
+} from './practice-stats/pages/stats-by-prog-languages/stats-by-prog-languages.component';
+import {StatsByStudentsComponent} from './practice-stats/pages/stats-by-students/stats-by-students.component';
+import {PracticeStatsModule} from "./practice-stats/practice-stats.module";
+import {MatListModule} from "@angular/material/list";
 
 export const BACKEND_URL = "http://localhost:8080"
 export const ROUTES: Routes = [{component: HomePageComponent, path: ""}]
@@ -22,7 +30,11 @@ export const ROUTES: Routes = [{component: HomePageComponent, path: ""}]
   declarations: [
     AppComponent,
     HomePageComponent,
-    HeaderComponent
+    HeaderComponent,
+    StatsComponent,
+    StatsByMentorsComponent,
+    StatsByProgLanguagesComponent,
+    StatsByStudentsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +45,9 @@ export const ROUTES: Routes = [{component: HomePageComponent, path: ""}]
     MatProgressSpinnerModule,
     MentorModule,
     StudentModule,
-    PracticeTicketModule
+    PracticeTicketModule,
+    PracticeStatsModule,
+    MatListModule
   ],
   providers: [HttpClient,
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},

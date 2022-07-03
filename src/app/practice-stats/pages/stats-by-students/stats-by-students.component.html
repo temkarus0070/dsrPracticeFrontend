@@ -1,0 +1,22 @@
+<form (ngSubmit)="getStats()">
+  <label for="practiceBegin"></label>
+  <input [(ngModel)]="beginDate" [ngModelOptions]="{standalone: true}" id="practiceBegin" type="date"/>
+  <label for="practiceEnd"></label>
+  <input [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}" id="practiceEnd" type="date"/>
+  <input class="btn btn-primary" type="submit" value="Получить">
+</form>
+
+<div>
+  <table>
+    <tr>
+      <th>студент</th>
+      <th>рекомендован к собеседованию</th>
+      <th>итоговая оценка</th>
+    </tr>
+    <tr *ngFor="let stat of studentsStats |async">
+      <td><a href="/students/{{stat.student.id}}">{{stat.student.fullName}}</a></td>
+      <td>{{stat.recommendToHire ? "да" : "нет"}}</td>
+      <td>{{stat.finalMark}}</td>
+    </tr>
+  </table>
+</div>
