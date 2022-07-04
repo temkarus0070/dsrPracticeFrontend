@@ -1,6 +1,7 @@
 <nav>
   <a *ngIf=" !hasAuth" href="/login">войти</a>
   <a *ngIf=" !hasAuth" href="/register">зарегистрироваться(для менторов)</a>
+  <a *ngIf="hasAdminRole()" href="/programming-languages/create">Добавить язык программирования</a>
   <a *ngIf="hasAdminRole()" href="/mentors-tickets">заявки менторов на регистрацию</a>
   <a *ngIf="hasAdminRole()" href="/stats">получить статистику прохождения практики</a>
   <a *ngIf="hasAdminRole()" href="/students">список студентов</a>

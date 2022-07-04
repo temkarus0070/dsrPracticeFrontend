@@ -1,0 +1,5 @@
+<form (ngSubmit)="create()">
+  <label for="langName">название языка программирования</label>
+  <input [(ngModel)]="progLang.name" [ngModelOptions]="{standalone: true}" id="langName" type="text"/>
+  <input type="submit" value="сохранить"/>
+</form>

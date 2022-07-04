@@ -14,6 +14,7 @@ import {FormsModule} from "@angular/forms";
 import {UpdateReviewsComponent} from "./components/update-reviews/update-reviews.component";
 import {HasAdminRoleGuard} from "../auth/guards/has-admin-role.guard";
 import {HasAuthGuard} from "../auth/guards/has-auth.guard";
+import {CreateProgLanguageComponent} from "./pages/create-prog-language/create-prog-language.component";
 
 
 export const ROUTES: Routes = [{
@@ -21,7 +22,8 @@ export const ROUTES: Routes = [{
   path: "practice-tickets",
   canActivate: [HasAuthGuard]
 }, {component: UpdateComponent, path: "practice-tickets/edit", canActivate: [HasAuthGuard]},
-  {component: CreateComponent, path: "practice-tickets/create", canActivate: [HasAdminRoleGuard]}]
+  {component: CreateComponent, path: "practice-tickets/create", canActivate: [HasAdminRoleGuard]},
+  {component: CreateProgLanguageComponent, path: "programming-languages/create", canActivate: [HasAdminRoleGuard]}]
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ export const ROUTES: Routes = [{
     UpdateComponent,
     PracticeTicketComponent,
     PracticeTicketInputFormComponent,
-    UpdateReviewsComponent
+    UpdateReviewsComponent,
+    CreateProgLanguageComponent
   ],
   imports: [
     CommonModule,
