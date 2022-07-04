@@ -39,8 +39,8 @@ export class PracticeTicketService {
     httpParams = httpParams.set("mentorId", id.mentorId);
     httpParams = httpParams.set("studentId", id.studentId);
     httpParams = httpParams.set("programmingLanguageId", id.programmingLanguageId);
-    httpParams = httpParams.set("beginOfPractice", id.beginOfPractice.toLocaleDateString());
-    httpParams = httpParams.set("endOfPractice", id.endOfPractice.toLocaleDateString());
+    httpParams = httpParams.set("beginOfPractice", new Date(id.beginOfPractice).toLocaleDateString());
+    httpParams = httpParams.set("endOfPractice", new Date(id.endOfPractice).toLocaleDateString());
     return httpParams;
   }
 }
