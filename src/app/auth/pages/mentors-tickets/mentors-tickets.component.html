@@ -1,0 +1,16 @@
+<div>
+  <div *ngFor="let mentor of registratedMentors | async">
+    <div *ngIf="!isRegistrated(mentor.id)">
+      <span>логин</span>
+      <p>{{mentor.user.username}}</p>
+      <span>полное имя</span>
+      <p>{{mentor.fullName}}</p>
+      <span>должность</span>
+      <p>{{mentor.jobName}}</p>
+      <span>контактные данные</span>
+      <p>{{mentor.contactData}}</p>
+      <button (click)="approveRegister(mentor.id)">одобрить регистрацию</button>
+    </div>
+
+  </div>
+</div>

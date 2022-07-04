@@ -22,6 +22,7 @@ import {
 import {StatsByStudentsComponent} from './practice-stats/pages/stats-by-students/stats-by-students.component';
 import {PracticeStatsModule} from "./practice-stats/practice-stats.module";
 import {MatListModule} from "@angular/material/list";
+import {AuthModule} from "./auth/auth.module";
 
 export const BACKEND_URL = "http://localhost:8080"
 export const ROUTES: Routes = [{component: HomePageComponent, path: ""}]
@@ -47,7 +48,8 @@ export const ROUTES: Routes = [{component: HomePageComponent, path: ""}]
     StudentModule,
     PracticeTicketModule,
     PracticeStatsModule,
-    MatListModule
+    MatListModule,
+    AuthModule
   ],
   providers: [HttpClient,
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},

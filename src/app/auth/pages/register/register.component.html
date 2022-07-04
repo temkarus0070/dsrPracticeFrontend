@@ -1,0 +1,13 @@
+<form (ngSubmit)="register()">
+  <label for="login">логин</label>
+  <input [(ngModel)]="mentor.user.username" [ngModelOptions]="{standalone: true}" id="login" type="text"/>
+  <label for="password">пароль</label>
+  <input [(ngModel)]="mentor.user.password" [ngModelOptions]="{standalone: true}" id="password" type="password"/>
+  <label for="contactData">контактная информация</label>
+  <input [(ngModel)]="mentor.contactData" [ngModelOptions]="{standalone: true}" id="contactData" type="text"/>
+  <label for="fullName">ФИО</label>
+  <input [(ngModel)]="mentor.fullName" [ngModelOptions]="{standalone: true}" id="fullName" type="text"/>
+  <label for="job">должность</label>
+  <input [(ngModel)]="mentor.jobName" [ngModelOptions]="{standalone: true}" id="job" type="text"/>
+  <input type="submit" value="зарегистрироваться"/>
+</form>

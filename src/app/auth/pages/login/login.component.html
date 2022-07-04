@@ -1,0 +1,7 @@
+<form (ngSubmit)="login()">
+  <label for="login">логин</label>
+  <input [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" id="login" type="text"/>
+  <label for="password">пароль</label>
+  <input [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" id="password" type="password"/>
+  <input type="submit" value="войти"/>
+</form>

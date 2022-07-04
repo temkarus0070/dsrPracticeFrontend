@@ -1,4 +1,7 @@
 <nav>
+  <a *ngIf=" !hasAuth" href="/login">войти</a>
+  <a *ngIf=" !hasAuth" href="/register">зарегистрироваться(для менторов)</a>
+  <a *ngIf="hasAdminRole()" href="/mentors-tickets">заявки менторов на регистрацию</a>
   <a href="/stats">получить статистику прохождения практики</a>
   <a href="/students">список студентов</a>
   <a href="/students/create">добавить нового студента</a>
@@ -6,4 +9,5 @@
   <a href="/mentors/create">добавить нового ментора</a>
   <a href="/practice-tickets">список прохождения практики</a>
   <a href="/practice-tickets/create">создать новую заявку на прохождение практики</a>
+  <button (click)="logout()" *ngIf="hasAuth">выйти</button>
 </nav>
