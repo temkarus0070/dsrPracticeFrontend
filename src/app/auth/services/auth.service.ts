@@ -21,7 +21,9 @@ export class AuthService {
   }
 
   public getAuth(): Observable<User | null> {
-    return this.httpClient.get<User>(BACKEND_URL + "/current-user");
+    var httpHeaders = new HttpHeaders();
+    httpHeaders = httpHeaders.set("check-auth", "true")
+    return this.httpClient.get<User>(BACKEND_URL + "/current-user", {headers: httpHeaders});
   }
 
   public logout(): void {

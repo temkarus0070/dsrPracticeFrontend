@@ -12,7 +12,8 @@ export class ErrorsInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<any> {
     return next.handle(request).pipe(catchError((httpErrorResponse: HttpErrorResponse) => {
       this.loadingProgressService.isLoaded();
-      alert(`Произошла ошибка ${httpErrorResponse.message}`);
+      if (!request.headers.has("check-auth"))
+        alert(`Произошла ошибка ${httpErrorResponse.message}`);
       return of(httpErrorResponse);
     }));
   }
