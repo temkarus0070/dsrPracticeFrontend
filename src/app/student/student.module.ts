@@ -9,14 +9,15 @@ import {ListStudentsComponent} from "./pages/student/list-students/list-students
 import {UpdateStudentComponent} from "./pages/student/update-student/update-student.component";
 import {StudentInputFormComponent} from "./components/student-input-form/student-input-form.component";
 import {StudentComponent} from "./components/student/student.component";
+import {HasAdminRoleGuard} from "../auth/guards/has-admin-role.guard";
 
 
 export const ROUTES: Routes = [{
   component: CreateStudentComponent,
-  path: "students/create"
-}, {component: ListStudentsComponent, path: "students"},
-  {component: UpdateStudentComponent, path: "students/edit"},
-  {component: StudentComponent, path: "students/:id"}]
+  path: "students/create", canActivate: [HasAdminRoleGuard]
+}, {component: ListStudentsComponent, path: "students", canActivate: [HasAdminRoleGuard]},
+  {component: UpdateStudentComponent, path: "students/edit", canActivate: [HasAdminRoleGuard]},
+  {component: StudentComponent, path: "students/:id", canActivate: [HasAdminRoleGuard]}]
 
 @NgModule({
   declarations: [
@@ -32,6 +33,8 @@ export const ROUTES: Routes = [{
     RouterModule.forRoot(ROUTES),
     HttpClientModule,
     FormsModule
-  ]
+  ],
+  providers: [
+    HasAdminRoleGuard]
 })
 export class StudentModule { }

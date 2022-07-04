@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../models/user";
 import {BACKEND_URL} from "../../app.module";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {Mentor} from "../../mentor/entity/mentor";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  public currentUser!: User | null;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -23,7 +24,15 @@ export class AuthService {
   public getAuth(): Observable<User | null> {
     var httpHeaders = new HttpHeaders();
     httpHeaders = httpHeaders.set("check-auth", "true")
-    return this.httpClient.get<User>(BACKEND_URL + "/current-user", {headers: httpHeaders});
+    return this.httpClient.get<User>(BACKEND_URL + "/current-user", {headers: httpHeaders})
+      .pipe(tap((e) => {
+        if (e) {
+          this.currentUser = e;
+        } else this.currentUser = null;
+        return e;
+      }, error => {
+        this.currentUser = null;
+      }));
   }
 
   public logout(): void {

@@ -7,13 +7,14 @@ import {FormsModule} from "@angular/forms";
 import {RouterModule, Routes} from "@angular/router";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {MentorsTicketsComponent} from './pages/mentors-tickets/mentors-tickets.component';
+import {HasAdminRoleGuard} from "./guards/has-admin-role.guard";
 
 
 export const ROUTES: Routes = [{component: LoginComponent, path: "login"}, {
   component: RegisterComponent,
   path: "register"
 },
-  {component: MentorsTicketsComponent, path: "mentors-tickets"}]
+  {component: MentorsTicketsComponent, path: "mentors-tickets", canActivate: [HasAdminRoleGuard]}]
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ export const ROUTES: Routes = [{component: LoginComponent, path: "login"}, {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    HasAdminRoleGuard
   ]
 })
 export class AuthModule {

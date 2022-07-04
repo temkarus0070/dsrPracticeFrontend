@@ -1,5 +1,5 @@
 export class Person {
-  id: number = 0
+  id!: number;
   fullName: string = ""
   contactData: string = ""
 }

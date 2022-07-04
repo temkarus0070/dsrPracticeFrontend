@@ -16,6 +16,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public isValid(): boolean {
+    return this.user.username !== "" && this.user.password !== ""
+  };
+
   login() {
     this.authService.login(this.user)
       .subscribe(e => {
@@ -24,6 +28,7 @@ export class LoginComponent implements OnInit {
         console.log(jwt);
         if (jwt != null) {
           localStorage.setItem("jwt", jwt);
+          location.href = "/"
         }
       }, error => alert("неверный логин или пароль"))
   }

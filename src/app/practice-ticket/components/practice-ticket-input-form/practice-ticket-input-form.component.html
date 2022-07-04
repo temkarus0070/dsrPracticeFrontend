@@ -2,7 +2,7 @@
   <label class="form-label" for="student">Студент</label>
   <select [(ngModel)]="practiceTicket.student.id" [disabled]="isUpdate" [ngModelOptions]="{standalone: true}"
           id="student">
-    <option *ngFor="let student of students | async"
+    <option *ngFor="let student of students "
             value="{{student.id}}">{{student.fullName + " " + student.studyCourse + "курс " + student.studyGroup + " группа"}}</option>
   </select>
   <p *ngIf="practiceTicket.student.fullName!==''" class="alert-warning">Это поле обязательно к заполнению</p>
@@ -10,7 +10,7 @@
   <label class="form-label" for="mentor">Ментор</label>
   <select [(ngModel)]="practiceTicket.mentor.id" [disabled]="isUpdate" [ngModelOptions]="{standalone: true}"
           id="mentor">
-    <option *ngFor="let mentor of mentors | async"
+    <option *ngFor="let mentor of mentors "
             value="{{mentor.id}}">{{mentor.fullName + " " + mentor.jobName}}</option>
   </select>
 
@@ -27,7 +27,7 @@
   <label class="form-label" for="progLanguage">Язык программирования</label>
   <select [(ngModel)]="practiceTicket.programmingLanguage.id" [disabled]="isUpdate"
           [ngModelOptions]="{standalone: true}" id="progLanguage">
-    <option *ngFor="let language of progLanguages | async" value="{{language.id}}">{{language.name}}</option>
+    <option *ngFor="let language of progLanguages " value="{{language.id}}">{{language.name}}</option>
   </select>
 
   <label class="form-label" for="beginDate">Дата начала практики</label>
@@ -55,5 +55,5 @@
               [ngModelOptions]="{standalone: true}" cols="50" id="finalReview"></textarea>
   </div>
 
-  <input class="btn btn-primary" style="margin-top: 40px" type="submit" value="отправить">
+  <input [disabled]="!isValid()" class="btn btn-primary" style="margin-top: 40px" type="submit" value="отправить">
 </form>

@@ -4,7 +4,6 @@ import {StudentService} from "../../../student/services/student.service";
 import {MentorService} from "../../../mentor/services/mentor.service";
 import {Student} from "../../../student/entities/student";
 import {Mentor} from "../../../mentor/entity/mentor";
-import {Observable} from "rxjs";
 import {ProgrammingLanguage} from "../../entity/programmingLanguage";
 import {ProgLanguagesService} from "../../../services/prog-languages.service";
 import {PracticeTicketService} from "../../services/practice-ticket.service";
@@ -18,16 +17,15 @@ import {MentorReview} from "../../../student/entities/MentorReview";
 })
 export class PracticeTicketInputFormComponent implements OnInit, OnChanges {
 
-  @Input() public practiceTicket!: PracticeTicket | null;
+  @Input() public practiceTicket: PracticeTicket | null = new PracticeTicket();
   @Output() public ticketUpdate = new EventEmitter<PracticeTicket>();
   @Input() public isUpdate = false;
-  public students: Observable<Student[]> = this.studentService.getList();
-  public mentors: Observable<Mentor[]> = this.mentorService.getAll();
-  public progLanguages: Observable<ProgrammingLanguage[]> = this.progLanguagesService.getList();
+  public students: Student[] = [];
+  public mentors: Mentor[] = [];
+  public progLanguages: ProgrammingLanguage[] = [];
   public marksValues: string[] = [];
 
   constructor(private studentService: StudentService, private mentorService: MentorService, private progLanguagesService: ProgLanguagesService, private practiceTicketaService: PracticeTicketService) {
-
 
   }
 
@@ -58,6 +56,28 @@ export class PracticeTicketInputFormComponent implements OnInit, OnChanges {
       if (!this.practiceTicket.finalMentorReview)
         this.practiceTicket.finalMentorReview = mentorReview;
     }
+
+    if (!this.isUpdate) {
+      this.studentService.getList().subscribe(e => {
+        this.students = e;
+      });
+      this.mentorService.getAll().subscribe(e => {
+        console.log(e);
+        this.mentors = e;
+      });
+      this.progLanguagesService.getList().subscribe(e => {
+        this.progLanguages = e;
+      });
+    }
+
+  }
+
+  public isValid(): boolean {
+    if (this.isUpdate) {
+      return this.practiceTicket?.practiceTask.taskText !== "" && this.practiceTicket?.practiceTask.taskName !== "";
+    }
+    console.log(this.practiceTicket?.id.endOfPractice)
+    return this.practiceTicket?.mentor.id !== undefined && this.practiceTicket?.student.id !== undefined && this.practiceTicket?.id.beginOfPractice !== undefined && this.practiceTicket?.id.endOfPractice !== undefined;
   }
 
 }

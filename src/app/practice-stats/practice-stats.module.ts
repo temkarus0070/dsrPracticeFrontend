@@ -7,12 +7,21 @@ import {StatsByMentorsComponent} from "./pages/stats-by-mentors/stats-by-mentors
 import {StatsByProgLanguagesComponent} from "./pages/stats-by-prog-languages/stats-by-prog-languages.component";
 import {StatsByStudentsComponent} from "./pages/stats-by-students/stats-by-students.component";
 import {StatsComponent} from "./pages/stats/stats.component";
+import {HasAdminRoleGuard} from "../auth/guards/has-admin-role.guard";
 
 
-export const ROUTES: Routes = [{component: StatsByMentorsComponent, path: "stats/mentors"},
-  {component: StatsByProgLanguagesComponent, path: "stats/students/programming-languages"},
-  {component: StatsByStudentsComponent, path: "stats/students"},
-  {component: StatsComponent, path: "stats"}]
+export const ROUTES: Routes = [{
+  component: StatsByMentorsComponent,
+  path: "stats/mentors",
+  canActivate: [HasAdminRoleGuard]
+},
+  {
+    component: StatsByProgLanguagesComponent,
+    path: "stats/students/programming-languages",
+    canActivate: [HasAdminRoleGuard]
+  },
+  {component: StatsByStudentsComponent, path: "stats/students", canActivate: [HasAdminRoleGuard]},
+  {component: StatsComponent, path: "stats", canActivate: [HasAdminRoleGuard]}]
 
 @NgModule({
   declarations: [],
@@ -21,6 +30,9 @@ export const ROUTES: Routes = [{component: StatsByMentorsComponent, path: "stats
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(ROUTES)
+  ],
+  providers: [
+    HasAdminRoleGuard
   ]
 })
 export class PracticeStatsModule {

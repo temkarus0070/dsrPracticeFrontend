@@ -12,10 +12,16 @@ import {HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {UpdateReviewsComponent} from "./components/update-reviews/update-reviews.component";
+import {HasAdminRoleGuard} from "../auth/guards/has-admin-role.guard";
+import {HasAuthGuard} from "../auth/guards/has-auth.guard";
 
 
-export const ROUTES:Routes=[{component:ListComponent,path:"practice-tickets"},{component:UpdateComponent,path:"practice-tickets/edit"},
-  {component:CreateComponent,path:"practice-tickets/create"}]
+export const ROUTES: Routes = [{
+  component: ListComponent,
+  path: "practice-tickets",
+  canActivate: [HasAuthGuard]
+}, {component: UpdateComponent, path: "practice-tickets/edit", canActivate: [HasAuthGuard]},
+  {component: CreateComponent, path: "practice-tickets/create", canActivate: [HasAdminRoleGuard]}]
 
 @NgModule({
   declarations: [
@@ -32,6 +38,10 @@ export const ROUTES:Routes=[{component:ListComponent,path:"practice-tickets"},{c
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     FormsModule
+  ],
+  providers: [
+    HasAdminRoleGuard,
+    HasAuthGuard
   ]
 })
 export class PracticeTicketModule { }
