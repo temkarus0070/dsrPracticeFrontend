@@ -77,7 +77,7 @@ export class PracticeTicketInputFormComponent implements OnInit, OnChanges {
       return this.practiceTicket?.practiceTask.taskText !== "" && this.practiceTicket?.practiceTask.taskName !== "";
     }
     console.log(this.practiceTicket?.id.endOfPractice)
-    return this.practiceTicket?.mentor.id !== undefined && this.practiceTicket?.student.id !== undefined && this.practiceTicket?.id.beginOfPractice !== undefined && this.practiceTicket?.id.endOfPractice !== undefined;
+    return this.practiceTicket?.mentor.id !== undefined && this.practiceTicket?.student.id !== undefined && this.practiceTicket?.id.beginOfPractice !== undefined && this.practiceTicket?.id.endOfPractice !== undefined && this.practiceTicket.id.beginOfPractice < this.practiceTicket.id.endOfPractice;
   }
 
 }
