@@ -1,14 +1,14 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {PracticeTicket} from "../../entity/practiceTicket";
+import {PracticeTicket} from "../../models/practiceTicket";
 import {StudentService} from "../../../student/services/student.service";
 import {MentorService} from "../../../mentor/services/mentor.service";
-import {Student} from "../../../student/entities/student";
-import {Mentor} from "../../../mentor/entity/mentor";
-import {ProgrammingLanguage} from "../../entity/programmingLanguage";
+import {Student} from "../../../student/models/student";
+import {Mentor} from "../../../mentor/models/mentor";
+import {ProgrammingLanguage} from "../../models/programmingLanguage";
 import {ProgLanguagesService} from "../../../services/prog-languages.service";
 import {PracticeTicketService} from "../../services/practice-ticket.service";
-import {Mark} from "../../entity/mark";
-import {MentorReview} from "../../../student/entities/MentorReview";
+import {Mark} from "../../models/mark";
+import {MentorReview} from "../../../student/models/MentorReview";
 
 @Component({
   selector: 'app-practice-ticket-input-form',

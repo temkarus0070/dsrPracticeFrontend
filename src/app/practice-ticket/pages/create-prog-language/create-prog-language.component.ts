@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProgLangService} from "../../services/prog-lang.service";
-import {ProgrammingLanguage} from "../../entity/programmingLanguage";
+import {ProgrammingLanguage} from "../../models/programmingLanguage";
 
 @Component({
   selector: 'app-create-prog-language',

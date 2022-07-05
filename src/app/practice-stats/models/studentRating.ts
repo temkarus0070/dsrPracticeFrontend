@@ -1,6 +1,6 @@
-import {Student} from "../../student/entities/student";
-import {Mark} from "../../practice-ticket/entity/mark";
-import {ProgrammingLanguage} from "../../practice-ticket/entity/programmingLanguage";
+import {Student} from "../../student/models/student";
+import {Mark} from "../../practice-ticket/models/mark";
+import {ProgrammingLanguage} from "../../practice-ticket/models/programmingLanguage";
 
 export class StudentRating {
   student!: Student

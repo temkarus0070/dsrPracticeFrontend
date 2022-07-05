@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MentorsRegisterService} from "../../services/mentors-register.service";
-import {Mentor} from "../../../mentor/entity/mentor";
+import {Mentor} from "../../../mentor/models/mentor";
 import {Observable} from "rxjs";
 
 @Component({

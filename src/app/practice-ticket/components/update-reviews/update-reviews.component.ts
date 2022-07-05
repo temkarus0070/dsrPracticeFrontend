@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MentorReview} from "../../../student/entities/MentorReview";
-import {PracticeTicket} from "../../entity/practiceTicket";
+import {MentorReview} from "../../../student/models/MentorReview";
+import {PracticeTicket} from "../../models/practiceTicket";
 
 @Component({
   selector: 'app-update-reviews',

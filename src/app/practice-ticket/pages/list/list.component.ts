@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PracticeTicketService} from "../../services/practice-ticket.service";
 import {Observable} from "rxjs";
-import {PracticeTicket} from "../../entity/practiceTicket";
+import {PracticeTicket} from "../../models/practiceTicket";
 
 @Component({
   selector: 'app-list',

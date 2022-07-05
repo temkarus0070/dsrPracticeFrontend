@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Mentor} from "../../../mentor/entity/mentor";
+import {Mentor} from "../../../mentor/models/mentor";
 import {AuthService} from "../../services/auth.service";
 
 @Component({
@@ -20,5 +20,9 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.mentor).subscribe(e => {
       location.href = "/login"
     })
+  }
+
+  isValid(): boolean {
+    return this.mentor.fullName !== "" && this.mentor.jobName !== "" && this.mentor.user.username !== "" && this.mentor.user.password !== "";
   }
 }

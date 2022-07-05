@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MentorService} from "../../services/mentor.service";
-import {Mentor} from "../../entity/mentor";
+import {Mentor} from "../../models/mentor";
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
 

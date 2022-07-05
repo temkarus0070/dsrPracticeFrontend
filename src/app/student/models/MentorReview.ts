@@ -1,4 +1,4 @@
-import {PracticeTicket} from "../../practice-ticket/entity/practiceTicket";
+import {PracticeTicket} from "../../practice-ticket/models/practiceTicket";
 
 export class MentorReview {
   public id: number = 0

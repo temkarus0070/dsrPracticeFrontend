@@ -1,4 +1,4 @@
-import {Person} from "../../student/entities/person";
+import {Person} from "../../student/models/person";
 import {User} from "../../auth/models/user";
 
 export class Mentor extends Person {

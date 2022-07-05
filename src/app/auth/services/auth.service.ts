@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../models/user";
 import {BACKEND_URL} from "../../app.module";
 import {Observable, tap} from "rxjs";
-import {Mentor} from "../../mentor/entity/mentor";
+import {Mentor} from "../../mentor/models/mentor";
 
 @Injectable({
   providedIn: 'root'

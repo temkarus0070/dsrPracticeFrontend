@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Mentor} from "../entity/mentor";
+import {Mentor} from "../models/mentor";
 import {BACKEND_URL} from "../../app.module";
-import {PracticeTicket} from "../../practice-ticket/entity/practiceTicket";
+import {PracticeTicket} from "../../practice-ticket/models/practiceTicket";
 
 @Injectable({
   providedIn: 'root'

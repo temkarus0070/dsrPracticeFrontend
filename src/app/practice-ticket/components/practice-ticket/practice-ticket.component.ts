@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PracticeTicket} from "../../entity/practiceTicket";
+import {PracticeTicket} from "../../models/practiceTicket";
 import {PracticeTicketService} from "../../services/practice-ticket.service";
 
 @Component({

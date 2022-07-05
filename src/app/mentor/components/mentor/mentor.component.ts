@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Mentor} from "../../entity/mentor";
+import {Mentor} from "../../models/mentor";
 import {MentorService} from "../../services/mentor.service";
 import {ActivatedRoute} from "@angular/router";
 

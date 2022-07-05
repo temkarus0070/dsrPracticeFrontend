@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Mentor} from "../../entity/mentor";
+import {Mentor} from "../../models/mentor";
 
 @Component({
   selector: 'app-mentor-input-form',

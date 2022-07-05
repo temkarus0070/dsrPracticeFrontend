@@ -1,8 +1,8 @@
-import {Mentor} from "../../mentor/entity/mentor";
-import {Student} from "../../student/entities/student";
+import {Mentor} from "../../mentor/models/mentor";
+import {Student} from "../../student/models/student";
 import {PracticeTask} from "./practiceTask";
 import {PracticeTicketId} from "./PracticeTicketId";
-import {MentorReview} from "../../student/entities/MentorReview";
+import {MentorReview} from "../../student/models/MentorReview";
 import {ProgrammingLanguage} from "./programmingLanguage";
 import {Mark} from "./mark";
 

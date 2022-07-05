@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MentorService} from "../../services/mentor.service";
 import {Observable} from "rxjs";
-import {Mentor} from "../../entity/mentor";
+import {Mentor} from "../../models/mentor";
 
 @Component({
   selector: 'app-list',

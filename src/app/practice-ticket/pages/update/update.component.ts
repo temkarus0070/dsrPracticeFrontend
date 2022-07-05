@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {PracticeTicketService} from "../../services/practice-ticket.service";
-import {PracticeTicketId} from "../../entity/PracticeTicketId";
+import {PracticeTicketId} from "../../models/PracticeTicketId";
 import {Observable} from "rxjs";
-import {PracticeTicket} from "../../entity/practiceTicket";
+import {PracticeTicket} from "../../models/practiceTicket";
 
 @Component({
   selector: 'app-update',

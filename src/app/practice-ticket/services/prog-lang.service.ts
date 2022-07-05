@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ProgrammingLanguage} from "../entity/programmingLanguage";
+import {ProgrammingLanguage} from "../models/programmingLanguage";
 import {Observable} from "rxjs";
 import {BACKEND_URL} from "../../app.module";
 

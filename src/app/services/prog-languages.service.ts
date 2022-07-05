@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProgrammingLanguage} from "../practice-ticket/entity/programmingLanguage";
+import {ProgrammingLanguage} from "../practice-ticket/models/programmingLanguage";
 import {BACKEND_URL} from "../app.module";
 
 @Injectable({

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Student} from "../../entities/student";
+import {Student} from "../../models/student";
 
 @Component({
   selector: 'app-student-input-form',

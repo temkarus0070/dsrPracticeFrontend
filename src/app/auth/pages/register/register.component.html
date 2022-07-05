@@ -1,13 +1,17 @@
 <form (ngSubmit)="register()">
   <label for="login">логин</label>
   <input [(ngModel)]="mentor.user.username" [ngModelOptions]="{standalone: true}" id="login" type="text"/>
+  <p *ngIf="mentor.user.username===''" class="alert-warning">Это поле обязательно к заполнению</p>
   <label for="password">пароль</label>
   <input [(ngModel)]="mentor.user.password" [ngModelOptions]="{standalone: true}" id="password" type="password"/>
+  <p *ngIf="mentor.user.password==''" class="alert-warning">Это поле обязательно к заполнению</p>
   <label for="contactData">контактная информация</label>
   <input [(ngModel)]="mentor.contactData" [ngModelOptions]="{standalone: true}" id="contactData" type="text"/>
   <label for="fullName">ФИО</label>
   <input [(ngModel)]="mentor.fullName" [ngModelOptions]="{standalone: true}" id="fullName" type="text"/>
+  <p *ngIf="mentor.fullName===''" class="alert-warning">Это поле обязательно к заполнению</p>
   <label for="job">должность</label>
   <input [(ngModel)]="mentor.jobName" [ngModelOptions]="{standalone: true}" id="job" type="text"/>
-  <input type="submit" value="зарегистрироваться"/>
+  <p *ngIf="mentor.jobName===''" class="alert-warning">Это поле обязательно к заполнению</p>
+  <input [disabled]="!isValid()" type="submit" value="зарегистрироваться"/>
 </form>
