@@ -33,10 +33,11 @@ export class MentorComponent implements OnInit {
         if (!b) {
           return;
         }
-        this.mentorService.delete(this.mentor.id).subscribe(e => {
-          this.isDelete = true;
-        });
+
       }
+      this.mentorService.delete(this.mentor.id).subscribe(e => {
+        this.isDelete = true;
+      });
     })
 
   }
